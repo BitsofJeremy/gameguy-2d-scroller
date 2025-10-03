@@ -12,10 +12,6 @@ Graphics by [http://kenney.nl](http://kenney.nl)
 
 Most sounds by [https://opengameart.org/](https://opengameart.org/)
 
-## Builds
-
- - Linux, Macos, HTML5, and Android builds in the [Build directory](https://gitlab.com/d4t4cc/gameguy-2d-scroller.git/tree/master/build) of the repo.
- - Note: They were built using my machine, YMMV
 
  ## TODO
 
