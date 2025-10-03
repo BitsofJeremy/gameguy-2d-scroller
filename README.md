@@ -27,3 +27,7 @@ Most sounds by [https://opengameart.org/](https://opengameart.org/)
 
   Desktop screenshot
   ![screenshot](screenshot.png)
+
+## License
+
+This game is open source and released under the MIT License. See the [LICENSE](LICENSE) file for details.
