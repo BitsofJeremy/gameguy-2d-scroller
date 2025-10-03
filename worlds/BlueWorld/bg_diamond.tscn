@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://worlds/BlueWorld/world_scripts/diamond_02.gd" type="Script" id=1]
+[ext_resource path="res://worlds/BlueWorld/tiles/platformPack_item007.png" type="Texture" id=2]
+[ext_resource path="res://worlds/BlueWorld/sounds/sound_coin.wav" type="AudioStream" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "taken"
+tracks/0/type = "audio"
+tracks/0/path = NodePath("sound_coin")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[node name="bg_diamond" type="Area2D"]
+position = Vector2( 1640, 230 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="spr_bg_d" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="sound_coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/taken = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_bg_diamond_body_entered"]

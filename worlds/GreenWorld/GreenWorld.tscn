@@ -1,0 +1,297 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://worlds/GreenWorld/GreenWorld.gd" type="Script" id=1]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://worlds/GreenWorld/sounds/GreenWorld.ogg" type="AudioStream" id=3]
+[ext_resource path="res://ScreenShake.tscn" type="PackedScene" id=4]
+[ext_resource path="res://worlds/GreenWorld/backgrounds/layer-1.png" type="Texture" id=5]
+[ext_resource path="res://worlds/GreenWorld/backgrounds/layer-3.png" type="Texture" id=6]
+[ext_resource path="res://assets/MainTileSet.tres" type="TileSet" id=7]
+[ext_resource path="res://worlds/GreenWorld/green_complete.gd" type="Script" id=8]
+[ext_resource path="res://worlds/GreenWorld/tiles/platformPack_tile051.png" type="Texture" id=9]
+[ext_resource path="res://out_of_bounds.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/madBlock.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/slime.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/snail.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/fly.tscn" type="PackedScene" id=14]
+[ext_resource path="res://worlds/GreenWorld/green_diamond_01.tscn" type="PackedScene" id=15]
+[ext_resource path="res://worlds/GreenWorld/green_diamond_02.tscn" type="PackedScene" id=16]
+[ext_resource path="res://player.tscn" type="PackedScene" id=17]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
+
+[node name="GreenWorld" type="Node"]
+script = ExtResource( 1 )
+
+[node name="HUD" parent="." instance=ExtResource( 2 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="ScreenShake" parent="." instance=ExtResource( 4 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2( 0.5, 0.5 )
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_offset = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 1, 1 )
+
+[node name="layer-1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -0.902405, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_offset = Vector2( 0.75, 0.75 )
+motion_mirroring = Vector2( 1, 1 )
+
+[node name="layer-3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+visible = false
+position = Vector2( 0, 0.663452 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+format = 1
+tile_data = PoolIntArray( -393153, 14, 0, -393152, 17, 0, -393151, 17, 0, -393150, 17, 0, -393149, 17, 0, -393148, 17, 0, -393147, 17, 0, -393146, 15, 0, -262085, 14, 0, -262084, 17, 0, -262083, 15, 0, -131017, 14, 0, -131016, 17, 0, -131015, 15, 0, 51, 14, 0, 52, 17, 0, 53, 15, 0, 65584, 11, 0, 65597, 11, 0, 65602, 14, 0, 65603, 17, 0, 65604, 17, 0, 65605, 17, 0, 65606, 17, 0, 65607, 17, 0, 65608, 17, 0, 65609, 17, 0, 65610, 17, 0, 65611, 17, 0, 65612, 17, 0, 65613, 17, 0, 65614, 17, 0, 65615, 17, 0, 65616, 17, 0, 65617, 17, 0, 65618, 17, 0, 65619, 17, 0, 65620, 17, 0, 65621, 15, 0, 65624, 11, 0, 65627, 11, 0, 65630, 11, 0, 65633, 11, 0, 65636, 11, 0, 196654, 11, 0, 196667, 11, 0, 196715, 11, 0, 196718, 11, 0, 196719, 4, 0, 196720, 4, 0, 196721, 4, 0, 196722, 4, 0, 196723, 4, 0, 196724, 4, 0, 196725, 4, 0, 196726, 4, 0, 196727, 4, 0, 196728, 4, 0, 196729, 4, 0, 196730, 4, 0, 196731, 4, 0, 196732, 4, 0, 196733, 4, 0, 196734, 4, 0, 196735, 4, 0, 196736, 4, 0, 196737, 4, 0, 196738, 4, 0, 196739, 4, 0, 196740, 4, 0, 196741, 4, 0, 196742, 4, 0, 196743, 4, 0, 196744, 4, 0, 196745, 4, 0, 196746, 4, 0, 196747, 4, 0, 196748, 4, 0, 196749, 4, 0, 196750, 4, 0, 196751, 11, 0, 196755, 11, 0, 196756, 4, 0, 196757, 4, 0, 196758, 4, 0, 196759, 4, 0, 196760, 4, 0, 196761, 4, 0, 196762, 4, 0, 196763, 4, 0, 196764, 4, 0, 196765, 4, 0, 196766, 4, 0, 196767, 4, 0, 196768, 4, 0, 196769, 4, 0, 196770, 4, 0, 196771, 11, 0, 196774, 11, 0, 262175, 55, 0, 262220, 1, 0, 262254, 12, 0, 262287, 12, 0, 262291, 12, 0, 262307, 12, 0, 327698, 14, 0, 327699, 17, 0, 327700, 17, 0, 327701, 17, 0, 327702, 15, 0, 327707, 21, 0, 327708, 21, 0, 327709, 21, 0, 327710, 55, 0, 327711, 55, 0, 327712, 21, 0, 327713, 21, 0, 327714, 21, 0, 327715, 21, 0, 327724, 11, 0, 327737, 11, 0, 327749, 14, 0, 327750, 17, 0, 327751, 15, 0, 327754, 14, 0, 327755, 17, 0, 327756, 17, 0, 327757, 17, 0, 327758, 15, 0, 327761, 14, 0, 327762, 17, 0, 327763, 15, 0, 327772, 11, 0, 327785, 11, 0, 327790, 12, 0, 327823, 12, 0, 327827, 12, 0, 327843, 12, 0, 327848, 11, 0, 393217, 23, 0, 393243, 14, 0, 393244, 17, 0, 393245, 17, 0, 393246, 17, 0, 393247, 17, 0, 393248, 17, 0, 393249, 17, 0, 393250, 17, 0, 393251, 15, 0, 393304, 1, 0, 393312, 0, 0, 393326, 12, 0, 393359, 12, 0, 393363, 12, 0, 393379, 12, 0, 458753, 11, 0, 458754, 4, 0, 458755, 4, 0, 458756, 4, 0, 458757, 4, 0, 458758, 4, 0, 458759, 4, 0, 458760, 4, 0, 458761, 4, 0, 458762, 4, 0, 458763, 4, 0, 458764, 4, 0, 458765, 4, 0, 458766, 4, 0, 458767, 4, 0, 458768, 11, 0, 458780, 14, 0, 458781, 17, 0, 458782, 17, 0, 458783, 17, 0, 458784, 17, 0, 458785, 17, 0, 458786, 15, 0, 458794, 11, 0, 458807, 11, 0, 458839, 14, 0, 458840, 17, 0, 458841, 15, 0, 458847, 14, 0, 458848, 17, 0, 458849, 15, 0, 458855, 11, 0, 458862, 12, 0, 458895, 12, 0, 458899, 12, 0, 458915, 12, 0, 458922, 11, 0, 524289, 12, 0, 524304, 12, 0, 524311, 54, 0, 524312, 54, 0, 524313, 54, 0, 524317, 13, 0, 524318, 12, 0, 524319, 12, 0, 524320, 12, 0, 524321, 13, 0, 524380, 1, 0, 524398, 12, 0, 524431, 12, 0, 524435, 12, 0, 524451, 12, 0, 524463, 22, 0, 524464, 21, 0, 524465, 21, 0, 524473, 21, 0, 524474, 21, 0, 524475, 22, 0, 589825, 12, 0, 589840, 12, 0, 589848, 54, 0, 589854, 12, 0, 589855, 12, 0, 589856, 12, 0, 589863, 11, 0, 589864, 4, 0, 589865, 4, 0, 589866, 4, 0, 589867, 4, 0, 589868, 4, 0, 589869, 4, 0, 589870, 4, 0, 589871, 4, 0, 589872, 4, 0, 589873, 4, 0, 589874, 4, 0, 589875, 4, 0, 589876, 11, 0, 589877, 4, 0, 589878, 4, 0, 589879, 4, 0, 589880, 4, 0, 589881, 4, 0, 589882, 4, 0, 589883, 4, 0, 589884, 4, 0, 589885, 4, 0, 589886, 4, 0, 589887, 4, 0, 589888, 4, 0, 589889, 4, 0, 589890, 11, 0, 589907, 14, 0, 589908, 17, 0, 589909, 15, 0, 589915, 14, 0, 589916, 17, 0, 589917, 15, 0, 589923, 14, 0, 589924, 17, 0, 589925, 15, 0, 589934, 12, 0, 589967, 12, 0, 589971, 12, 0, 589987, 12, 0, 589996, 11, 0, 589999, 14, 0, 590000, 17, 0, 590001, 17, 0, 590002, 17, 0, 590003, 17, 0, 590004, 17, 0, 590005, 17, 0, 590006, 17, 0, 590007, 17, 0, 590008, 17, 0, 590009, 17, 0, 590010, 17, 0, 590011, 15, 0, 655361, 12, 0, 655376, 12, 0, 655384, 12, 0, 655390, 12, 0, 655391, 12, 0, 655392, 12, 0, 655399, 12, 0, 655412, 12, 0, 655426, 12, 0, 655470, 12, 0, 655503, 12, 0, 655507, 12, 0, 655523, 12, 0, 720897, 12, 0, 720912, 12, 0, 720920, 12, 0, 720926, 12, 0, 720927, 12, 0, 720928, 12, 0, 720935, 12, 0, 720948, 12, 0, 720962, 12, 0, 720966, 14, 0, 720967, 17, 0, 720968, 17, 0, 720969, 17, 0, 720970, 17, 0, 720971, 17, 0, 720972, 17, 0, 720973, 17, 0, 720974, 17, 0, 720975, 17, 0, 720976, 17, 0, 720977, 15, 0, 721006, 12, 0, 721039, 12, 0, 721043, 12, 0, 721059, 12, 0, 786433, 12, 0, 786448, 12, 0, 786456, 12, 0, 786462, 12, 0, 786463, 12, 0, 786464, 12, 0, 786471, 12, 0, 786484, 12, 0, 786498, 12, 0, 786542, 12, 0, 786575, 12, 0, 786579, 12, 0, 786595, 12, 0, 851969, 12, 0, 851984, 12, 0, 851992, 12, 0, 851998, 12, 0, 851999, 12, 0, 852000, 12, 0, 852007, 12, 0, 852020, 12, 0, 852034, 12, 0, 852078, 12, 0, 852111, 12, 0, 852115, 12, 0, 852131, 12, 0, 917505, 12, 0, 917520, 12, 0, 917528, 12, 0, 917534, 12, 0, 917535, 12, 0, 917536, 12, 0, 917543, 12, 0, 917556, 12, 0, 917570, 12, 0, 917614, 12, 0, 917647, 12, 0, 917651, 12, 0, 917667, 12, 0, 983041, 12, 0, 983056, 12, 0, 983064, 12, 0, 983070, 12, 0, 983071, 12, 0, 983072, 12, 0, 983079, 12, 0, 983092, 12, 0, 983106, 12, 0, 983150, 12, 0, 983183, 12, 0, 983187, 12, 0, 983203, 12, 0, 1048577, 12, 0, 1048592, 12, 0, 1048600, 12, 0, 1048606, 12, 0, 1048607, 12, 0, 1048608, 12, 0, 1048615, 12, 0, 1048628, 12, 0, 1048642, 12, 0, 1048686, 12, 0, 1048719, 12, 0, 1048723, 12, 0, 1048739, 12, 0, 1114113, 12, 0, 1114128, 12, 0, 1114136, 12, 0, 1114142, 12, 0, 1114143, 12, 0, 1114144, 12, 0, 1114151, 12, 0, 1114164, 12, 0, 1114178, 12, 0, 1114222, 12, 0, 1114255, 12, 0, 1114259, 12, 0, 1114275, 12, 0, 1179649, 12, 0, 1179664, 12, 0, 1179672, 12, 0, 1179677, 12, 0, 1179678, 12, 0, 1179679, 12, 0, 1179680, 12, 0, 1179681, 12, 0, 1179687, 12, 0, 1179700, 12, 0, 1179714, 12, 0, 1179758, 12, 0, 1179791, 12, 0, 1179795, 12, 0, 1179811, 12, 0, 1245185, 12, 0, 1245200, 12, 0, 1245208, 12, 0, 1245213, 12, 0, 1245214, 12, 0, 1245215, 12, 0, 1245216, 12, 0, 1245217, 12, 0, 1245223, 12, 0, 1245236, 12, 0, 1245250, 12, 0, 1245294, 12, 0, 1245327, 12, 0, 1245331, 12, 0, 1245347, 12, 0, 1310721, 12, 0, 1310786, 12, 0, 1310830, 12, 0, 1310863, 12, 0, 1310867, 12, 0, 1310883, 12, 0, 1376366, 12, 0, 1376399, 12, 0, 1376403, 12, 0, 1376419, 12, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="exit" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 11800, 550 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+next_world = "res://worlds/YellowWorld/YellowWorld.tscn"
+
+[node name="green_door" type="Sprite" parent="exit"]
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit"]
+shape = SubResource( 1 )
+
+[node name="out_of_bounds" parent="." instance=ExtResource( 10 )]
+position = Vector2( 27380, -470 )
+
+[node name="badguys" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="madBlock2" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 2200, 310 )
+
+[node name="madBlock3" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 4728.27, 1.10371 )
+
+[node name="madBlock12" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 5107.65, -2.59753 )
+
+[node name="madBlock4" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 4910, 630 )
+SPEED = 90
+HP = 5
+size = Vector2( 1.5, 1.5 )
+
+[node name="madBlock7" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 7310, 120 )
+
+[node name="madBlock8" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 8090, 130 )
+SPEED = 80
+HP = 6
+size = Vector2( 2, 2 )
+
+[node name="madBlock9" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 8860, 120 )
+
+[node name="madBlock10" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 9970, 150 )
+SPEED = 80
+HP = 6
+size = Vector2( 2, 2 )
+
+[node name="madBlock11" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 11470, 490 )
+SPEED = 80
+HP = 6
+size = Vector2( 2, 2 )
+
+[node name="madBlock5" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 5310, 260 )
+
+[node name="madBlock6" parent="badguys" instance=ExtResource( 11 )]
+position = Vector2( 4540, 250 )
+
+[node name="slime" parent="badguys" instance=ExtResource( 12 )]
+position = Vector2( 736.647, 454.512 )
+
+[node name="slime2" parent="badguys" instance=ExtResource( 12 )]
+position = Vector2( 3070, 510 )
+
+[node name="slime3" parent="badguys" instance=ExtResource( 12 )]
+position = Vector2( 3850, 530 )
+
+[node name="slime4" parent="badguys" instance=ExtResource( 12 )]
+position = Vector2( 7680, 140 )
+
+[node name="slime5" parent="badguys" instance=ExtResource( 12 )]
+position = Vector2( 8540, 130 )
+
+[node name="snail" parent="badguys" instance=ExtResource( 13 )]
+position = Vector2( 1365, 288 )
+
+[node name="fly2" parent="badguys" instance=ExtResource( 14 )]
+position = Vector2( 3221, 100.289 )
+
+[node name="fly4" parent="badguys" instance=ExtResource( 14 )]
+position = Vector2( 2968.44, 355.144 )
+
+[node name="diamond_01s" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="green_diamond_04" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 2721, 416 )
+
+[node name="green_diamond_10" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 2530, 550 )
+
+[node name="green_diamond_11" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 3360, 550 )
+
+[node name="green_diamond_12" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 3560, 420 )
+
+[node name="green_diamond_13" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 3680, 290 )
+
+[node name="green_diamond_14" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 3814, 160 )
+
+[node name="green_diamond_15" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 3940, 36 )
+
+[node name="green_diamond_36" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 3619.24, -157.315 )
+
+[node name="green_diamond_37" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 4240.65, -414.453 )
+
+[node name="green_diamond_38" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 4281.56, -414.453 )
+
+[node name="green_diamond_39" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 4324.42, -416.401 )
+
+[node name="green_diamond_16" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 4260, 550 )
+
+[node name="green_diamond_17" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 4660.5, 671.235 )
+
+[node name="green_diamond_18" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 5110.5, 671.235 )
+
+[node name="green_diamond_19" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 4840, 30 )
+
+[node name="green_diamond_20" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 4920, 30 )
+
+[node name="green_diamond_21" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 5000, 30 )
+
+[node name="green_diamond_22" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 5410, 540 )
+
+[node name="green_diamond_23" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 5923, 290 )
+
+[node name="green_diamond_24" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 6440, 540 )
+
+[node name="green_diamond_25" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 6880, 160 )
+
+[node name="green_diamond_26" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 6760, 290 )
+
+[node name="green_diamond_27" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 6630, 420 )
+
+[node name="green_diamond_28" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 7070, 160 )
+
+[node name="green_diamond_29" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 9190, 160 )
+
+[node name="green_diamond_30" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 9440, 160 )
+
+[node name="green_diamond_31" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 10470, 160 )
+
+[node name="green_diamond_32" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 10660, 160 )
+
+[node name="green_diamond_33" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 10790, 290 )
+
+[node name="green_diamond_34" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 10910, 420 )
+
+[node name="green_diamond_35" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 11040, 550 )
+
+[node name="green_diamond_07" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 2850, 290 )
+
+[node name="green_diamond_08" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 2980, 160 )
+
+[node name="green_diamond_09" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 3107, 33 )
+
+[node name="green_diamond_05" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 2014, 230 )
+
+[node name="green_diamond_06" parent="diamond_01s" instance=ExtResource( 15 )]
+position = Vector2( 1950, 290 )
+
+[node name="diamond_02s" type="Node2D" parent="."]
+
+[node name="green_diamond_02" parent="diamond_02s" instance=ExtResource( 16 )]
+position = Vector2( 1054.92, 409.515 )
+
+[node name="green_diamond_03" parent="diamond_02s" instance=ExtResource( 16 )]
+position = Vector2( 4897.35, 221.579 )
+
+[node name="green_diamond_09" parent="diamond_02s" instance=ExtResource( 16 )]
+position = Vector2( 4476.58, -419.316 )
+
+[node name="green_diamond_04" parent="diamond_02s" instance=ExtResource( 16 )]
+position = Vector2( 5920, 480 )
+
+[node name="green_diamond_05" parent="diamond_02s" instance=ExtResource( 16 )]
+position = Vector2( 5670, 350 )
+
+[node name="green_diamond_06" parent="diamond_02s" instance=ExtResource( 16 )]
+position = Vector2( 6180, 350 )
+
+[node name="green_diamond_07" parent="diamond_02s" instance=ExtResource( 16 )]
+position = Vector2( 11905.9, 507.227 )
+
+[node name="green_diamond_08" parent="diamond_02s" instance=ExtResource( 16 )]
+position = Vector2( 11970.1, 507.227 )
+
+[node name="player" parent="." instance=ExtResource( 17 )]
+position = Vector2( 240, 270 )
+

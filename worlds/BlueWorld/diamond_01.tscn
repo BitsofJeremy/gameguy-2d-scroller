@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://worlds/BlueWorld/world_scripts/diamond_01.gd" type="Script" id=1]
+[ext_resource path="res://worlds/BlueWorld/tiles/platformPack_item001.png" type="Texture" id=2]
+[ext_resource path="res://worlds/BlueWorld/world_scripts/spr_diamond.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="diamond_01" type="Area2D"]
+position = Vector2( 560, 540 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="spr_diamond" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_diamond_01_body_entered"]

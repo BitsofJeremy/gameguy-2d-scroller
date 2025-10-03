@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/OrangeWorld.ogg-3168f39ef179abef1a447b7ee72bbf28.oggstr"
+
+[deps]
+
+source_file="res://worlds/OrangeWorld/sounds/OrangeWorld.ogg"
+dest_files=[ "res://.import/OrangeWorld.ogg-3168f39ef179abef1a447b7ee72bbf28.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

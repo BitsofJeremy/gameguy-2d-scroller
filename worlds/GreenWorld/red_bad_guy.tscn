@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://worlds/GreenWorld/red_bad_guy.gd" type="Script" id=1]
+[ext_resource path="res://assets/Characters/4.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 39.1003, 39.0801 )
+
+[node name="red_bad_guy" type="KinematicBody2D"]
+
+position = Vector2( 659.722, 430.907 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="spr_red_bad_guy" type="Sprite" parent="." index="0"]
+
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+

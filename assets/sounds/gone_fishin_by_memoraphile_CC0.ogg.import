@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/gone_fishin_by_memoraphile_CC0.ogg-c00f00c497b9400f1d774c72acff0542.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/gone_fishin_by_memoraphile_CC0.ogg"
+dest_files=[ "res://.import/gone_fishin_by_memoraphile_CC0.ogg-c00f00c497b9400f1d774c72acff0542.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

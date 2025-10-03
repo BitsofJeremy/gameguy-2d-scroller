@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GreenWorld.ogg-9e6b319f932042889c73dd712dd780d3.oggstr"
+
+[deps]
+
+source_file="res://worlds/GreenWorld/sounds/GreenWorld.ogg"
+dest_files=[ "res://.import/GreenWorld.ogg-9e6b319f932042889c73dd712dd780d3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

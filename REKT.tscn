@@ -1,0 +1,132 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/REKT.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds/No Hope.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/fonts/kenvector_future.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/ui/green_button00.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/green_button01.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/red_button01.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/red_button02.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="REKT" type="CanvasLayer"]
+script = ExtResource( 1 )
+next_world = "res://GameGuy.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -40.0
+margin_top = -50.0
+margin_right = 1420.0
+margin_bottom = 810.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 15.6328
+margin_top = 557.262
+margin_right = 687.633
+margin_bottom = 584.262
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.22152, 0.738281, 0.0346069, 1 )
+text = "root@gameguy:~# ERROR BROKEN CONSOLE"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 333.0
+margin_top = 20.0
+margin_right = 690.0
+margin_bottom = 580.0
+size_flags_horizontal = 4
+custom_constants/separation = 16
+
+[node name="game" type="Label" parent="MarginContainer/VBoxContainer3"]
+margin_right = 357.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "game"
+align = 1
+valign = 1
+
+[node name="over" type="Label" parent="MarginContainer/VBoxContainer3"]
+margin_top = 129.0
+margin_right = 357.0
+margin_bottom = 242.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "over"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer3"]
+margin_left = 83.0
+margin_top = 258.0
+margin_right = 273.0
+margin_bottom = 307.0
+size_flags_horizontal = 4
+
+[node name="start_button" type="TextureButton" parent="MarginContainer/VBoxContainer3/VBoxContainer"]
+margin_right = 190.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 4 )
+texture_focused = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer/start_button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "restart"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer3"]
+margin_left = 83.0
+margin_top = 323.0
+margin_right = 273.0
+margin_bottom = 372.0
+size_flags_horizontal = 4
+
+[node name="exit_button" type="TextureButton" parent="MarginContainer/VBoxContainer3/VBoxContainer2"]
+margin_right = 190.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 6 )
+texture_focused = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/exit_button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "exit"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer3/VBoxContainer/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer3/VBoxContainer2/exit_button" to="." method="_on_exit_button_pressed"]

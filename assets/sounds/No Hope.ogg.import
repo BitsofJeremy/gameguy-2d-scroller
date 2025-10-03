@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/No Hope.ogg-600f96098186c1f638a3593783536a33.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/No Hope.ogg"
+dest_files=[ "res://.import/No Hope.ogg-600f96098186c1f638a3593783536a33.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

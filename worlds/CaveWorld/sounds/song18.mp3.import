@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/song18.mp3-1ec0fd8aaa76944af995c3c7babb1afb.mp3str"
+
+[deps]
+
+source_file="res://worlds/CaveWorld/sounds/song18.mp3"
+dest_files=[ "res://.import/song18.mp3-1ec0fd8aaa76944af995c3c7babb1afb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

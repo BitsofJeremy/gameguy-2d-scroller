@@ -1,0 +1,101 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/Characters/platformChar_idle.png" type="Texture" id=2]
+[ext_resource path="res://assets/Characters/platformChar_climb1.png" type="Texture" id=3]
+[ext_resource path="res://assets/Characters/platformChar_climb2.png" type="Texture" id=4]
+[ext_resource path="res://assets/Characters/platformChar_duck.png" type="Texture" id=5]
+[ext_resource path="res://assets/Characters/platformChar_walk1.png" type="Texture" id=6]
+[ext_resource path="res://assets/Characters/platformChar_walk2.png" type="Texture" id=7]
+[ext_resource path="res://assets/Characters/platformChar_jump.png" type="Texture" id=8]
+[ext_resource path="res://assets/Characters/platformChar_happy.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/touch_control/transparentDark22.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/touch_control/transparentDark23.png" type="Texture" id=11]
+[ext_resource path="res://assets/ui/touch_control/transparentDark24.png" type="Texture" id=12]
+[ext_resource path="res://assets/ui/touch_control/transparentDark46.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "dead",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "wave",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 22.8169
+
+[node name="player" type="KinematicBody2D"]
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 15.4728 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 40, 0 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ui" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="left" type="TouchScreenButton" parent="ui"]
+position = Vector2( 20, 400 )
+normal = ExtResource( 10 )
+action = "move_left"
+visibility_mode = 1
+
+[node name="right" type="TouchScreenButton" parent="ui"]
+position = Vector2( 90, 490 )
+normal = ExtResource( 11 )
+action = "move_right"
+visibility_mode = 1
+
+[node name="jump" type="TouchScreenButton" parent="ui"]
+position = Vector2( 840, 490 )
+normal = ExtResource( 12 )
+action = "jump"
+visibility_mode = 1
+
+[node name="fire" type="TouchScreenButton" parent="ui"]
+position = Vector2( 910, 400 )
+normal = ExtResource( 13 )
+action = "shoot"
+visibility_mode = 1
+
+[connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

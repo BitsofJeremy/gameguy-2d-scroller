@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/sounds/gone_fishin_by_memoraphile_CC0.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/backgrounds/Sky.png" type="Texture" id=2]
+[ext_resource path="res://winner.png" type="Texture" id=3]
+[ext_resource path="res://scripts/WorldComplete.gd" type="Script" id=4]
+[ext_resource path="res://assets/Tiles/door_openTop.png" type="Texture" id=5]
+[ext_resource path="res://assets/Tiles/door_openMid.png" type="Texture" id=6]
+[ext_resource path="res://player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/MainTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://out_of_bounds.tscn" type="PackedScene" id=9]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="TheEND" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+scale = Vector2( 2, 2 )
+motion_mirroring = Vector2( 640, 640 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="winner" type="Sprite" parent="."]
+position = Vector2( 637.648, 277.636 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="door" type="Area2D" parent="."]
+position = Vector2( 866.435, 543.106 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+next_world = "res://GameGuy.tscn"
+
+[node name="door_openTop" type="Sprite" parent="door"]
+position = Vector2( 0, -70 )
+texture = ExtResource( 5 )
+
+[node name="exit_door" type="Sprite" parent="door"]
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door"]
+shape = SubResource( 1 )
+
+[node name="player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 446.739, 468.362 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+format = 1
+tile_data = PoolIntArray( 524299, 24, 0, 589828, 30, 0, 589829, 33, 0, 589830, 33, 0, 589831, 33, 0, 589832, 33, 0, 589833, 33, 0, 589834, 33, 0, 589835, 33, 0, 589836, 33, 0, 589837, 33, 0, 589838, 33, 0, 589839, 31, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="out_of_bounds" parent="." instance=ExtResource( 9 )]
+position = Vector2( 6.33789, 1269.05 )
+
+[node name="HUD" parent="." instance=ExtResource( 10 )]
+
